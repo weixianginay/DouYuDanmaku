@@ -1,9 +1,11 @@
 package com.github.yanglw.douyu.message;
 
+import com.github.yanglw.douyu.message.handler.FormatMessageHandler;
+
 /**
  * Created by yanglw on 2016-04-08.
  */
-public class BlackRes extends Message {
+public class BlackRes extends Message implements FormatMessageHandler.FormatMessage {
     private String blacktype;
     private String snick;
     private String dnick;
@@ -35,6 +37,15 @@ public class BlackRes extends Message {
 
     @Override
     public String toString() {
+        return "BlackRes{" +
+               "blacktype='" + blacktype + '\'' +
+               ", snick='" + snick + '\'' +
+               ", dnick='" + dnick + '\'' +
+               '}';
+    }
+
+    @Override
+    public String getMessage() {
         return String.format("[%1$s] 被 [%2$s] %3$s。", getSnick(), getDnick(), getBlacktype());
     }
 }

@@ -1,9 +1,11 @@
 package com.github.yanglw.douyu.message;
 
+import com.github.yanglw.douyu.message.handler.FormatMessageHandler;
+
 /**
  * Created by yanglw on 2016-4-6.
  */
-public class ChatMsg extends Message {
+public class ChatMsg extends Message implements FormatMessageHandler.FormatMessage {
     private String mRid;
     private String mUid;
     private String mNickName;
@@ -29,7 +31,7 @@ public class ChatMsg extends Message {
             // @S --> /
             // @A --> @
             // \\ --> \
-            mTxt = mTxt.replace("@S","/").replace("@A","@").replace("\\\\","\\");
+            mTxt = mTxt.replace("@S", "/").replace("@A", "@").replace("\\\\", "\\");
         } else {
             mTxt = "";
         }
@@ -73,6 +75,21 @@ public class ChatMsg extends Message {
 
     @Override
     public String toString() {
+        return "ChatMsg{" +
+               "mRid='" + mRid + '\'' +
+               ", mUid='" + mUid + '\'' +
+               ", mNickName='" + mNickName + '\'' +
+               ", mTxt='" + mTxt + '\'' +
+               ", mCid='" + mCid + '\'' +
+               ", mLevel='" + mLevel + '\'' +
+               ", mCt='" + mCt + '\'' +
+               ", mGt='" + mGt + '\'' +
+               ", mRg='" + mRg + '\'' +
+               '}';
+    }
+
+    @Override
+    public String getMessage() {
         return String.format("[弹幕]%1$s：%2$s", getNickName(), getTxt());
     }
 }

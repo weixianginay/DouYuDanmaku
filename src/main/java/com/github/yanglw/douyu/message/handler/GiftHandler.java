@@ -7,13 +7,8 @@ import com.github.yanglw.douyu.util.LogUtils;
 /**
  * Created by yanglw on 2016-4-6.
  */
-public class GiftHandler extends CastMessageHandler<Gift> {
+public class GiftHandler extends FormatMessageHandler<Gift> {
     public GiftHandler() {
         super("dgb", Gift.class);
-    }
-
-    @Override
-    protected void handleMessage0(Connector connector, Gift gift) {
-        LogUtils.printf(gift.toString());
     }
 }

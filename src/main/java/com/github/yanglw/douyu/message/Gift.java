@@ -1,11 +1,12 @@
 package com.github.yanglw.douyu.message;
 
+import com.github.yanglw.douyu.message.handler.FormatMessageHandler;
 import com.github.yanglw.douyu.util.EmptyUtils;
 
 /**
  * Created by yanglw on 2016-4-8.
  */
-public class Gift extends Message {
+public class Gift extends Message implements FormatMessageHandler.FormatMessage {
     private String hit;
     private String nn;
     private String gs;
@@ -50,6 +51,15 @@ public class Gift extends Message {
 
     @Override
     public String toString() {
-        return String.format("[礼物][%1$s] 赠送主播 [%2$s] %3$s。", getSend(),getGift(),getHit());
+        return "Gift{" +
+               "hit='" + hit + '\'' +
+               ", nn='" + nn + '\'' +
+               ", gs='" + gs + '\'' +
+               '}';
+    }
+
+    @Override
+    public String getMessage() {
+        return String.format("[礼物][%1$s] 赠送主播 [%2$s] %3$s。", getSend(), getGift(), getHit());
     }
 }

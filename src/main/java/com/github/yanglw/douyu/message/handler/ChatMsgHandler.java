@@ -7,13 +7,8 @@ import com.github.yanglw.douyu.util.LogUtils;
 /**
  * Created by yanglw on 2016-4-6.
  */
-public class ChatMsgHandler extends CastMessageHandler<ChatMsg> {
+public class ChatMsgHandler extends FormatMessageHandler<ChatMsg> {
     public ChatMsgHandler() {
         super("chatmsg", ChatMsg.class);
-    }
-
-    @Override
-    protected void handleMessage0(Connector connector, ChatMsg chatMsg) {
-        LogUtils.printf(chatMsg);
     }
 }
