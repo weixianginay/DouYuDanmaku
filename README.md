@@ -18,7 +18,7 @@ java -jar DouYuDanmaku.jar http://www.douyu.com/58428
 
 效果如下：
 
-![](image.png)
+![](image.PNG)
 
 ## 感谢
 
