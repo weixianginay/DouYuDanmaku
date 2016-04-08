@@ -150,6 +150,13 @@ type@=bc_buy_deserve/level@=22/lev@=3/rid@=56040/gid@=141/cnt@=1/hits@=1/sid@=11
     type@=gift_title/uname@=主播芒果c507794/rname@=主播油条/gt@=2/uid@=11012144/rid@=56040/gid@=141/
     ```
 
+13. 位置
+
+    ```
+    type@=rss/rid@=574315/gid@=1/ss@=0/code@=3/notify@=0/endtime@=1460133001/
+    type@=rss/rid@=574315/gid@=1/ss@=1/code@=0/notify@=0/endtime@=32734/
+    ```
+
 ## step 3
 
 客户端需要没 45 秒想服务器发送心跳，服务器收到客户端的心跳之后，也会发送一次心跳。
