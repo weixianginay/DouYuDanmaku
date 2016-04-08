@@ -3,6 +3,7 @@ package com.github.yanglw.douyu;
 import com.github.yanglw.douyu.message.handler.BlackResHandler;
 import com.github.yanglw.douyu.message.handler.ChatMsgHandler;
 import com.github.yanglw.douyu.message.handler.GiftHandler;
+import com.github.yanglw.douyu.message.handler.RichManInRoomHandler;
 import com.github.yanglw.douyu.util.EmptyUtils;
 
 /**
@@ -14,6 +15,7 @@ public class Main {
             new DouYu().addMessageHandler(new ChatMsgHandler())
                        .addMessageHandler(new GiftHandler())
                        .addMessageHandler(new BlackResHandler())
+                       .addMessageHandler(new RichManInRoomHandler())
                        .start(args[0]);
         }
     }
