@@ -4,6 +4,7 @@ import com.github.yanglw.douyu.codec.DanMuChannelInitializer;
 import com.github.yanglw.douyu.codec.MessageHandlerAdapter;
 import com.github.yanglw.douyu.message.Message;
 import com.github.yanglw.douyu.util.EmptyUtils;
+import com.github.yanglw.douyu.util.LogUtils;
 
 import java.net.ConnectException;
 import java.net.SocketAddress;
@@ -17,6 +18,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.util.concurrent.GenericFutureListener;
 
 /**
  * Created by yanglw on 2016-4-7.
@@ -66,8 +68,17 @@ public class Connector {
         mFuture.channel().closeFuture().sync();
     }
 
-    public Connector write(String msg) {
-        mFuture.channel().writeAndFlush(msg);
+    public Connector write(final String msg) {
+        ChannelFuture channelFuture = mFuture.channel().writeAndFlush(msg);
+        channelFuture.addListener(new GenericFutureListener<ChannelFuture>() {
+            @Override
+            public void operationComplete(ChannelFuture future) throws Exception {
+                if (!future.isSuccess()) {
+                    LogUtils.printf(String.format("[%1$s] 输出失败，Socket 关闭。", msg));
+                    future.channel().close();
+                }
+            }
+        });
         return this;
     }
 
