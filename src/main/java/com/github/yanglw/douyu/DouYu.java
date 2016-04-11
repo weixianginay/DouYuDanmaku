@@ -29,6 +29,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
  * Created by yanglw on 2016-4-8.
  */
 public class DouYu {
+    private static final int SEA_DANMAKU_GID = -9999;
     private EventLoopGroup mGroup = new NioEventLoopGroup();
     private Connector mDanMuConnector;
     private Connector mConnector;
@@ -36,13 +37,21 @@ public class DouYu {
     private String mRoomId;
     private String mDanMuHost;
     private int mDanMuPort;
+    /** 弹幕组。如果设置为 -9999 ，则说明开启海量弹幕模式。 */
     private String mGId;
     private String mUserName;
+    /** 标记是否进入海量弹幕模式。 */
+    private boolean mSea;
 
     private List<MessageHandler> mHandlers = new LinkedList<>();
 
     public DouYu addMessageHandler(MessageHandler handler) {
         mHandlers.add(handler);
+        return this;
+    }
+
+    public DouYu sea(boolean enable) {
+        mSea = enable;
         return this;
     }
 
@@ -158,7 +167,7 @@ public class DouYu {
                            public void handleMessage(Connector connector, Message message) {
                                String joinMessage = String.format("type@=joingroup/rid@=%1$s/gid@=%2$s/",
                                                                   mRoomId,
-                                                                  mGId);
+                                                                  mSea ? SEA_DANMAKU_GID : mGId);
                                connector.write(joinMessage);
                                connector.removeMessageHandler(this);
                            }

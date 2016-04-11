@@ -12,11 +12,18 @@ import com.github.yanglw.douyu.util.EmptyUtils;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         if (!EmptyUtils.isEmpty(args)) {
-            new DouYu().addMessageHandler(new ChatMsgHandler())
+            String url = args[0];
+            String seaStr = "";
+            if (args.length > 1) {
+                seaStr = args[1].toLowerCase();
+            }
+            boolean sea = "1".equals(seaStr) || "true".equals(seaStr);
+            new DouYu().sea(sea)
+                       .addMessageHandler(new ChatMsgHandler())
                        .addMessageHandler(new GiftHandler())
                        .addMessageHandler(new BlackResHandler())
                        .addMessageHandler(new RichManInRoomHandler())
-                       .start(args[0]);
+                       .start(url);
         }
     }
 }

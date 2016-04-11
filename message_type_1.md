@@ -47,8 +47,6 @@ type@=rsm/rid@=0/gid@=0/t@=2/bt@=1460037255/vt@=345600/c@=xxxxxxxxxxxxxxxxxxxxxx
 
 经过测试发现，即使不发送 `type@=qtlnq/` ，服务器也会返回弹幕组的信息。
 
-获取到需要信息之后，即可关闭此 Socket ，重新开启一个 Socket 去连接弹幕服务器获取弹幕信息。
-
 ## 其他
 
 ### 1
