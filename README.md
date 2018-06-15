@@ -34,3 +34,9 @@ java -jar DouYuDanmaku.jar http://www.douyu.com/58428
 - [抓取斗鱼直播弹幕 - Brucezz's Blog](http://brucezz.github.io/articles/2016/01/11/douyu-crawler/)
 - [斗鱼 Socket 信息类型 1](message_type_1.md)
 - [斗鱼 Socket 信息类型 2](message_type_2.md)
+
+
+## 2018-06-15
+斗鱼变更了socket中报文数据，我在fork后，更新了新的正则规则，功能正常使用。
+之所以fork这个项目，最初是因为最近一直在学习socket，对netty这块很感兴趣。昨天闲看到几个socket抓取弹幕的项目，感觉只是demo级别的，不适用于实际开发。
+故今天找到这个基于netty的，感觉还可以。后续学习扩展一下自己想加的功能。
