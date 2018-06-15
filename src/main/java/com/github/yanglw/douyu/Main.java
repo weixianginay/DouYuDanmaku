@@ -11,8 +11,9 @@ import com.github.yanglw.douyu.util.EmptyUtils;
  */
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        if (!EmptyUtils.isEmpty(args)) {
-            String url = args[0];
+        if (EmptyUtils.isEmpty(args)) {
+//            String url = args[0];
+            String url = "https://www.douyu.com/dasima";
             String seaStr = "";
             if (args.length > 1) {
                 seaStr = args[1].toLowerCase();

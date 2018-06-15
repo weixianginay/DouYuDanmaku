@@ -12,7 +12,7 @@ public class MsgRepeaterList extends Message {
     public MsgRepeaterList(Message message) {
         super(message);
         rid = list.get("rid");
-        String list = this.list.get("list");
+        String list = this.list.get("iplist");
         String[] split = list.split("@AS@S");
         mMsgRepeaterArrayList = new ArrayList<>();
         for (String s : split) {

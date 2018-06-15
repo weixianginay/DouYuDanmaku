@@ -79,6 +79,8 @@ public class DouYu {
         }
 
         InetSocketAddress address = list.get(0);
+//        address=new InetSocketAddress("119.90.49.105",);
+
         String host = address.getHostString();
         int port = address.getPort();
         LogUtils.printf(String.format("使用服务器 [%1$s:%2$d] 。", host, port));
@@ -119,7 +121,7 @@ public class DouYu {
                           closeConnector();
                       }
                   })
-                  .addMessageHandler(new CastMessageHandler<MsgRepeaterList>("msgrepeaterlist", MsgRepeaterList.class) {
+                  .addMessageHandler(new CastMessageHandler<MsgRepeaterList>("msgiplist", MsgRepeaterList.class) {
                       @Override
                       protected void handleMessage0(Connector connector, MsgRepeaterList msgRepeaterList) {
                           ArrayList<MsgRepeater> msgRepeaterArrayList = msgRepeaterList.getMsgRepeaterArrayList();
